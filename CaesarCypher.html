@@ -1,10 +1,46 @@
 <!DOCTYPE html>
 
 <html>
+    <head>
+        <title>Caesar Shift Cypher</title>
+    </head>
     <body>
-        <h1>Caesar Shift Cypher</h1>
-        <p>
         
+        <p>
+            Caesar Shift <br>
+            <label for = "plainText">Enter Plain Text: </label>
+            <input type = "text" id = "plainText" name = "plainText">
+            <input type = "submit" onclick = "cypherShift()" id = "enterButton" name = "enterButton">
+            <input type = "text" id = "cypherText" name = "cypherText">
+
+            <script>
+                function cypherShift(){
+                    var plainText = document.getElementById("plainText").value.toUpperCase();
+
+                    var s = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+                    const a = s.split("");
+                    const b = s.split("");
+                    const c = plainText.split("");
+                    var words = "";
+                    for(var i = 0; i < 2; i++){
+                        var k = "";
+                        for(var j = 0; j < c.length; j++){
+                            var m = c[j];
+                            var x = b.indexOf(m);
+                            k += a[x];
+                        }
+                        document.getElementById("cypherText").value += words;
+                        
+                        // document.getElementById("output").innerHTML = words;
+                        k = "";
+                        var temp = b.shift();
+                        b.push(temp);
+                    }
+                    
+                    // alert(words[0]);
+                }
+            </script>
+            
         </p>
 
     </body>
